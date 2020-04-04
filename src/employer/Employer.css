@@ -27,6 +27,12 @@
 }
 
 .em-filters {
-    text-align: center;
     margin: 1rem auto;
+    margin-left: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.em-filters  button {
+    margin-left: 0;
 }

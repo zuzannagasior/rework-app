@@ -6,6 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
+import Icon from "@material-ui/core/Icon";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -104,21 +105,23 @@ const useStylesCard = makeStyles({
       <Card className={classesCard.root}>
         <CardContent>
           <Typography className={classesCard.title} color="textSecondary" gutterBottom>
-            {e.category}
+            {e.location}
           </Typography>
-          <Typography variant="h5" component="h2" className={classesCard.pos}>
+          <Typography variant="h5" component="h5" className={classesCard.pos}>
             {e.name}
+          </Typography>
+          <Typography variant="h6" component="h6" className={classesCard.pos}>
+            <b>{e.position}</b>
           </Typography>
           {/* <Typography className={classesCard.pos} color="textSecondary">
             adjective
           </Typography> */}
-          {/* <Typography variant="body2" component="p">
-            Dostępność:
-            <br />
-            {bull} Od: {e.availabilityFrom}
-            <br />
-            {bull} Do: {e.availabilityFrom}
-          </Typography> */}
+          <Typography variant="body2" component="p">
+            <Icon style={{ color: "green", fontSize: "1rem", marginRight: "0.5rem" }}>
+              history
+            </Icon>
+            dostępny od {e.availability}
+          </Typography>
         </CardContent>
         <CardActions>
           <Button variant="contained" color="primary" size="small" onClick={handleOpen}>Zobacz profil</Button>
