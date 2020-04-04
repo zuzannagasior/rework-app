@@ -6,6 +6,7 @@ import { Autocomplete } from '@material-ui/lab';
 import TextField from '@material-ui/core/TextField';
 import jobOfferData from './oferty_pracy.json'
 
+<<<<<<< HEAD
 const positions = [
     "Kucharz / Kucharka",
     "Stolarz",
@@ -144,6 +145,16 @@ class UnemployeeModule extends React.Component {
                 <JobOfferList jobOffersDataToDisplay={this.state.jobOffersDataToDisplay} />
             </div>
     )}
+=======
+const UnemployeeModule = () => {
+    return (
+        <div className="em-container">
+        
+            <Button  variant="contained" size="medium" style={{margin: "20px auto", backgroundColor: "#FFBB10"}}>Filtruj</Button>
+            <JobOfferList />
+        </div>
+    )
+>>>>>>> 4b3fc2f8bca933a0888bf7a548892de31b0ca777
 }
 
 export default UnemployeeModule;
