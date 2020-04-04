@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
     maxWidth: 800,
+    minHeight: '100vh',
     backgroundColor: theme.palette.background.paper,
     // border: '2px solid #000',
     // boxShadow: theme.shadows[5],
@@ -73,30 +74,37 @@ const useStylesCard = makeStyles({
       };
 
       const body = (
-        <div  className={classes.paper}>
-          <h2 id="simple-modal-title">{e.name}</h2>
-          <p id="simple-modal-description">
-            <b>{e.job}</b> z {e.experience} letnim doświadczeniem
-            <br/>
-            <i>Władysławowo</i>
-          </p>
-          <p id="simple-modal-description">
-            Profil: 
+        <div  className={classes.paper} style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+          <div>
+            <h2 id="simple-modal-title">{e.name}</h2>
+            <p id="simple-modal-description">
+              <b>{e.job}</b> z {e.experience} letnim doświadczeniem
+              <br/>
+              <Icon style={{ color: "#FFBB10", fontSize: "1rem", marginTop: "0.5rem"}}>
+                location_on
+              </Icon>
+              {e.location}
+            </p>
+            <p id="simple-modal-description">
+              <b>Profil:</b>
+              <br />
+              {e.description}
+            </p>
+            {/* <EmployeeModal /> */}
             <br />
-            {e.description}
-          </p>
-          {/* <EmployeeModal /> */}
-          <br />
-          <Button variant="contained" color="primary" size="medium">Nawiąż kontakt</Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            size="medium"
-            onClick={handleClose}
-            style={{float:"right"}}
-          >
-            Zamknij
-          </Button>
+          </div>
+          <div  style={{marginBottom: "3rem"}}>
+            <Button variant="contained" style={{backgroundColor: "#30AABC", color: "#fff"}} size="medium">Nawiąż kontakt</Button>
+            <Button
+              variant="contained"
+              color="default"
+              size="medium"
+              onClick={handleClose}
+              style={{float:"right"}}
+            >
+              Zamknij
+            </Button>
+          </div>
         </div>
       );
 
