@@ -12,6 +12,8 @@ import AddJobOffer from './employer/AddJobOffer.js';
 import UnemployeeModule from './unemployee/UnemployeeModule.js';
 import ErrorPage from './ErrorPage.js';
 import JobOfferList from './unemployee/JobOfferList';
+import RegisterAsUnemployee from './register/RegisterAsUnemployee'
+import RegisterAsEmployer from './register/RegisterAsEmployer'
 import 'typeface-roboto';
 
 
@@ -22,6 +24,8 @@ function App() {
       {/* nav */}
       <Switch>
         <Route path="/" exact component={Main} />
+        <Route path="/register-employer" component={RegisterAsEmployer} />
+        <Route path="/register-worker" component={RegisterAsUnemployee} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         <Route path="/employer-module" component={EmployerModule} />
