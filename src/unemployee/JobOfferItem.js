@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
   
 
-function JobOfferList({ id, description, date, location, title, company }) {
+function JobOfferList({ id, description, date, location, title, company, phone, email }) {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -71,18 +71,45 @@ function JobOfferList({ id, description, date, location, title, company }) {
     <div  className={classes.paper}>
       <h2 id="simple-modal-title">{title}</h2>
       <p id="simple-modal-description">
-        <b>{date}</b> z {location} letnim doświadczeniem
+        <b>{company}</b>
         <br/>
-        <i>Władysławowo</i>
+        <Typography
+            className={classes.title}
+            color="textSecondary"
+            gutterBottom
+          >
+            <Icon style={{ color: "green", fontSize: "1rem" }}>
+              location_on
+            </Icon>{" "}
+            {location}
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+              style={{ float: "right" }}
+            >
+              <Icon style={{ color: "primary", fontSize: "1rem" }}>
+                access_time
+              </Icon>{" "}
+              {date}
+            </Typography>
+          </Typography>
       </p>
       <p id="simple-modal-description">
-        Profil: 
+      <b> Opis oferty :</b> 
         <br />
         {description}
       </p>
-      {/* <EmployeeModal /> */}
+      <br/>
+      <h2 style={{textAlign: "center"}}>Nawiąż kontakt</h2>
+      <div  >
+           <h2 style={{ width: "100%", textAlign: "center", lineHeigth: "2rem"}}> <Icon style={{color:"#23a847", marginRight: "1rem", fontSize: "2rem"}}>phone</Icon>{phone}</h2>
+      </div>
+      <div  >
+           <h3 class="primary"  style={{ width: "100%", textAlign: "center", lineHeigth: "2rem"}}> <Icon style={{color: "#23a847", marginRight: "1rem", fontSize: "2rem"}}>email</Icon>{email}</h3>
+      </div>
       <br />
-      <Button variant="contained" color="primary" size="medium">Nawiąż kontakt</Button>
+      <Button variant="contained" style={{backgroundColor: "#23a847"}}  size="medium">Zadzwoń</Button>
       <Button
             variant="contained"
             color="secondary"
