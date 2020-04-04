@@ -25,8 +25,8 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/employer-module" component={EmployerModule} />
         <Route path="/employer-module/employer-job-offer-list" component={EmployerJobOfferList} />
-        <Route path="/employer-module/search-employee" component={SearchEmployee} />
-        <Route path="/employer-module/add-job-offer" component={AddJobOffer} />
+        <Route path="/search-employee" component={SearchEmployee} />
+        <Route path="/add-job-offer" component={AddJobOffer} />
         <Route path="/unemployee-module" component={UnemployeeModule} />
         <Route path="/unemployee-module/job-offer-list" component={JobOfferList} />
         <Route component={ErrorPage} />

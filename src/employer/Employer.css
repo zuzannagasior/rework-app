@@ -11,3 +11,7 @@
 .em-container button {
     margin: 0 1rem;
 }
+
+.em-container a {
+    text-decoration: none;
+}
