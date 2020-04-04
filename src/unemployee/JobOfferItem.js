@@ -78,7 +78,7 @@ function JobOfferList({ id, description, date, location, title, company, phone, 
             color="textSecondary"
             gutterBottom
           >
-            <Icon style={{ color: "green", fontSize: "1rem" }}>
+            <Icon style={{ color: "#FFBB10", fontSize: "1rem" }}>
               location_on
             </Icon>{" "}
             {location}
@@ -88,7 +88,7 @@ function JobOfferList({ id, description, date, location, title, company, phone, 
               gutterBottom
               style={{ float: "right" }}
             >
-              <Icon style={{ color: "primary", fontSize: "1rem" }}>
+              <Icon style={{ color: "#FFBB10", fontSize: "1rem" }}>
                 access_time
               </Icon>{" "}
               {date}
@@ -127,7 +127,7 @@ function JobOfferList({ id, description, date, location, title, company, phone, 
     <>
       <Card className={classes.root}>
         <CardContent>
-          <Typography variant="h5" component="h2">
+          <Typography variant="h5" component="h2" style={{color: "#30AABC"}}>
             {title}
           </Typography>
 
@@ -145,7 +145,7 @@ function JobOfferList({ id, description, date, location, title, company, phone, 
             color="textSecondary"
             gutterBottom
           >
-            <Icon style={{ color: "green", fontSize: "1rem" }}>
+            <Icon style={{ color: "#FFBB10", fontSize: "1rem" }}>
               location_on
             </Icon>{" "}
             {location}
@@ -155,7 +155,7 @@ function JobOfferList({ id, description, date, location, title, company, phone, 
               gutterBottom
               style={{ float: "right" }}
             >
-              <Icon style={{ color: "primary", fontSize: "1rem" }}>
+              <Icon style={{ color: "#FFBB10", fontSize: "1rem" }}>
                 access_time
               </Icon>{" "}
               {date}
@@ -172,7 +172,7 @@ function JobOfferList({ id, description, date, location, title, company, phone, 
         <CardActions>
           <Button
             variant="contained"
-            color="primary"
+            style={{backgroundColor: "#30AABC", color: "white"}}
             size="small"
             onClick={handleOpen}
           >

@@ -7,10 +7,10 @@ const UnemployeeModule = () => {
     return (
         <div className="em-container">
             <nav>
-                <NavLink to="/add-job-offer"><Button color="primary">Dodaj ofertę pracy</Button></NavLink>
-                <NavLink to="/unemployee-module/job-offer-list"><Button color="primary">Zmień swoje ustaweienia</Button></NavLink>
+                <NavLink to="/add-job-offer"><Button style={{backgroundColor: "#FFBB10",margin: "20px auto"}}>Ustawienia konta</Button></NavLink>
+                <NavLink to="/unemployee-module/job-offer-list"><Button style={{backgroundColor: "#FFBB10", margin: "20px auto"}}>Szukaj pracy</Button></NavLink>
             </nav>
-            <Button  variant="contained" size="medium" style={{margin: "20px auto"}}>Filtruj</Button>
+            <Button  variant="contained" size="medium" style={{margin: "20px auto", backgroundColor: "#FFBB10"}}>Filtruj</Button>
             <JobOfferList />
         </div>
     )
