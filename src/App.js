@@ -12,6 +12,7 @@ import AddJobOffer from './employer/AddJobOffer.js';
 import UnemployeeModule from './unemployee/UnemployeeModule.js';
 import ErrorPage from './ErrorPage.js';
 import JobOfferList from './unemployee/JobOfferList';
+import 'typeface-roboto';
 
 
 function App() {
