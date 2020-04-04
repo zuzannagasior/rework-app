@@ -11,9 +11,9 @@
     },
     {
         "id": 2,
-        "title": "Kucharz \/ kucharka",
+        "title": "Kucharz \/ Kucharka",
         "company": "Restauracja Impresja",
-        "location": "Pozna\u0144, Pi\u0105tkowo",
+        "location": "Pozna\u0144",
         "description": "Lorem  Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It wa",
         "date": "30.03.2020",
         "phone": "58 565 43 55",
@@ -21,7 +21,7 @@
     },
     {
         "id": 3,
-        "title": "Barman \/ barmanka",
+        "title": "Barman \/ Barmanka",
         "company": "Hotel Skalny",
         "location": "Gda\u0144sk",
         "description": "Lorem  Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It wa",
@@ -51,7 +51,7 @@
     },
     {
         "id": 6,
-        "title": "Kelner\/Kelnerka",
+        "title": "Kelner \/ Kelnerka",
         "company": "Restauracja Malina",
         "location": "Wroc\u0142aw",
         "description": "Lorem  Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It wa",

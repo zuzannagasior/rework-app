@@ -4,10 +4,6 @@
     height: 100vh;
 }
 
-.em-container nav {
-    padding: 1rem;
-}
-
 .em-container button {
     margin: 0 1rem;
 }
@@ -16,19 +12,12 @@
     text-decoration: none;
 }
 
-.em-card-box {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .em-card-box>div {
-    margin: auto;
     margin-bottom: 1rem;
 }
 
 .em-filters {
     margin: 1rem auto;
-    margin-left: 2rem;
     display: flex;
     flex-wrap: wrap;
 }

@@ -105,26 +105,29 @@ const useStylesCard = makeStyles({
       <Card className={classesCard.root}>
         <CardContent>
           <Typography className={classesCard.title} color="textSecondary" gutterBottom>
+            <Icon style={{ color: "#FFBB10", fontSize: "1rem", marginRight: "0.5rem"  }}>
+              location_on
+            </Icon>
             {e.location}
           </Typography>
-          <Typography variant="h5" component="h5" className={classesCard.pos}>
+          <Typography variant="h5" component="h5" className={classesCard.pos} style={{color: "#30AABC"}}>
             {e.name}
           </Typography>
           <Typography variant="h6" component="h6" className={classesCard.pos}>
-            <b>{e.position}</b>
+            {e.position}
           </Typography>
           {/* <Typography className={classesCard.pos} color="textSecondary">
             adjective
           </Typography> */}
           <Typography variant="body2" component="p">
-            <Icon style={{ color: "green", fontSize: "1rem", marginRight: "0.5rem" }}>
+            <Icon style={{ color: "#FFBB10", fontSize: "1rem", marginRight: "0.5rem" }}>
               history
             </Icon>
             dostępny od {e.availability}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button variant="contained" color="primary" size="small" onClick={handleOpen}>Zobacz profil</Button>
+          <Button variant="contained" style={{backgroundColor: "#30AABC", color: "white"}} size="small" onClick={handleOpen}>Zobacz profil</Button>
           <Modal
             open={open}
             onClose={handleClose}

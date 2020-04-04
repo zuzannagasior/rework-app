@@ -2,55 +2,22 @@ import React from 'react'
 import './Employer.css';
 import { NavLink } from 'react-router-dom';
 import { Button } from '@material-ui/core';
-import { Input } from '@material-ui/core';
-import { InputLabel } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import { Autocomplete } from '@material-ui/lab';
 import EmployeeCard from './EmployeeCard.js'
 import employeeData from './pracownicy.json'
 
-// const employeeData = [
-//     {name: "Zuzia",
-//     category: "Gastronomia",
-//     availabilityFrom: "15.04.2020",
-//     availabilityTo: "19.04.2020",
-//     job: "Kucharz",
-//     experience: "5",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."    },
-//     {name: "Łukasz",
-//     category: "Branża hotelarska",
-//     availabilityFrom: "15.04.2020",
-//     availabilityTo: "19.04.2020",
-//     job: "Kelner",
-//     experience: "5",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-//     },
-//     {name: "Madzia",
-//     category: "Branża eventowa",
-//     availabilityFrom: "15.04.2020",
-//     availabilityTo: "19.04.2020",
-//     job: "Ochroniarz",
-//     experience: "5",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-//     },
-//     {name: "Radek",
-//     category: "Branża eventowa",
-//     availabilityFrom: "15.04.2020",
-//     availabilityTo: "19.04.2020",
-//     job: "Muzyk",
-//     experience: "5",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-//     }
-// ];
-
 const positions = [
     "Kosmetyczka",
-    "Kucharz/Kucharka",
+    "Kucharz / Kucharka",
     "Stolarz",
-    "Pielęgniarz/Pielęgniarka",
-    "Kelner/Kelnerka",
-    "Nauczyciel/Nauczycielka",
-    "Spawacz"
+    "Pielęgniarz / Pielęgniarka",
+    "Kelner / Kelnerka",
+    "Nauczyciel / Nauczycielka",
+    "Kafelkarz",
+    "Barman / Barmanka",
+    "Cukiernik",
+    "Wędliniaż Masarz Rzeźnik",
 ];
 
 const cities = [
@@ -91,7 +58,13 @@ const cities = [
 "Nowy Kraków (pow. sławieński)",
 "Wrocław",
 "Koszalin",
-"Lipno"
+"Lipno",
+"Poznań",
+"Władysławowo",
+"Gdańsk",
+"Rewal",
+"Toruń",
+"Wrocław"
 ];
 
 class SearchEmployee extends React.Component {
@@ -103,16 +76,41 @@ class SearchEmployee extends React.Component {
     }
 
     filter = () => {
-        console.log('filter');
+        const position = this.state.filterPosition;
+        const location = this.state.filterLocation;
 
-        console.log(this.state, 'this.state');
-    };
+        let employeeDataFiltered = [];
+        employeeDataFiltered = employeeData.filter((e) => 
+        {
+            if (!!position && !!location) {
+                return (e.position === position) && location.includes(e.location);
+            } else if (!!position) {
+                return (e.position === position);
+            } else if (!!location) {
+                return location.includes(e.location);
+            } else {
+                return true;
+            }
+        });
 
-    handleInputChange = (e) => {
-        this.setState({ 
-            filterPosition: e.target.value
+        this.setState({
+            employeeDataToDisplay: employeeDataFiltered
         });
     };
+
+    handlePositionChange = (e, value) => {
+        this.setState({ 
+            filterPosition: value
+        });
+    };
+
+    handleLocationChange = (e, value) => {
+        this.setState({ 
+            filterLocation: value
+        });
+    };
+
+
 
     render() {
         let employees = this.state.employeeDataToDisplay.map((e, index)=> (
@@ -122,13 +120,14 @@ class SearchEmployee extends React.Component {
         return (
             <div className="em-container">
                 <nav>
-                    <NavLink to="/employer-module"><Button color="primary">Powrót</Button></NavLink>
+                    <NavLink to="/"><Button style={{margin: "20px auto", backgroundColor: "#FFBB10"}}>Powrót</Button></NavLink>
                 </nav>
                 <section className="em-filters">
                         <Autocomplete
                             id="combo-box-demo"
                             options={positions.sort()}
                             getOptionLabel={(option) => option}
+                            onChange={this.handlePositionChange}
                             style={{ width: 300, marginBottom: "1rem", marginRight: "1rem" }}
                             renderInput={(params) => <TextField {...params} label="Zawód" variant="outlined" />}
                             />
@@ -137,10 +136,11 @@ class SearchEmployee extends React.Component {
                             id="combo-box-demo"
                             options={cities.sort()}
                             getOptionLabel={(option) => option}
+                            onChange={this.handleLocationChange}
                             style={{ width: 300, marginBottom: "1rem", marginRight: "1rem" }}
                             renderInput={(params) => <TextField {...params} label="Miejscowość" variant="outlined" />}
                             />
-                      <Button color="primary" variant="contained" style={{ marginBottom: "1rem", marginRight: "1rem" }} onClick={this.filter}>Filtruj</Button>
+                      <Button variant="contained" style={{ marginBottom: "1rem", marginRight: "1rem", backgroundColor: "#FFBB10" }} onClick={this.filter}>Filtruj</Button>
                 </section>
                 <section className="em-card-box">
                     {employees}

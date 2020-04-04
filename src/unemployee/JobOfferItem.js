@@ -9,17 +9,6 @@ import Modal from "@material-ui/core/Modal";
 
 import Icon from "@material-ui/core/Icon";
 
-const jobOffers = [
-  {
-    title: "Kafelkarz",
-    company: "Budowlanka sp. z o. o.",
-    location: "Władysławowo",
-    description:
-      "Lorem  Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It wa",
-    date: "",
-  },
-];
-
 const useStyles = makeStyles((theme) => ({
     paper: {
       position: 'absolute',
@@ -106,7 +95,7 @@ function JobOfferList({ id, description, date, location, title, company, phone, 
            <h2 style={{ width: "100%", textAlign: "center", lineHeigth: "2rem"}}> <Icon style={{color:"#23a847", marginRight: "1rem", fontSize: "2rem"}}>phone</Icon>{phone}</h2>
       </div>
       <div  >
-           <h3 class="primary"  style={{ width: "100%", textAlign: "center", lineHeigth: "2rem"}}> <Icon style={{color: "#23a847", marginRight: "1rem", fontSize: "2rem"}}>email</Icon>{email}</h3>
+           <h3 className="primary"  style={{ width: "100%", textAlign: "center", lineHeigth: "2rem"}}> <Icon style={{color: "#23a847", marginRight: "1rem", fontSize: "2rem"}}>email</Icon>{email}</h3>
       </div>
       <br />
       <Button variant="contained" style={{backgroundColor: "#23a847"}}  size="medium">Zadzwoń</Button>
@@ -125,7 +114,7 @@ function JobOfferList({ id, description, date, location, title, company, phone, 
 
   return (
     <>
-      <Card className={classes.root}>
+      <Card className={classes.root} style={{marginBottom: "1rem"}}> 
         <CardContent>
           <Typography variant="h5" component="h2" style={{color: "#30AABC"}}>
             {title}
