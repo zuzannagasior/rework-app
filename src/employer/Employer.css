@@ -1,0 +1,13 @@
+.em-container {
+    width: 80%;
+    margin: auto;
+    height: 100vh;
+}
+
+.em-container nav {
+    padding: 1rem;
+}
+
+.em-container button {
+    margin: 0 1rem;
+}
