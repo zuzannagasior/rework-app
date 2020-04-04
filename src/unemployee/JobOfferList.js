@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
+import JobOfferItem from "./JobOfferItem";
+import jobs from './oferty_pracy.json'
 
-const JobOfferList = () => {
-    return (
-        <div>
-            
-        </div>
-    )
+
+function JobOfferList() {
+ 
+    return jobs.map(job => { 
+      return <JobOfferItem key={job.id} id={job.id} title={job.title} location={job.location} description={job.description} date={job.date} company={job.company}/>
+        })
+  
+
 }
 
 export default JobOfferList;

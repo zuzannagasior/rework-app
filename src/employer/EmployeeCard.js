@@ -11,16 +11,16 @@ function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
 
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+// function getModalStyle() {
+//   const top = 50 + rand();
+//   const left = 50 + rand();
 
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
+//   return {
+//     top: `${top}%`,
+//     left: `${left}%`,
+//     transform: `translate(-${top}%, -${left}%)`,
+//   };
+// }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -30,9 +30,9 @@ const useStyles = makeStyles((theme) => ({
     // border: '2px solid #000',
     // boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    top: '50% !important',
-    left: '50% !important',
-    transform: 'translate(-50%, -50%) !important'
+    // top: '50% !important',
+    // left: '50% !important',
+    // transform: 'translate(-50%, -50%) !important'
   },
 }));
 
@@ -60,7 +60,7 @@ const useStylesCard = makeStyles({
   
       const classes = useStyles();
       // getModalStyle is not a pure function, we roll the style only on the first render
-      const [modalStyle] = React.useState(getModalStyle);
+      // const [modalStyle] = React.useState(getModalStyle);
       const [open, setOpen] = React.useState(false);
 
       const handleOpen = () => {
@@ -72,7 +72,7 @@ const useStylesCard = makeStyles({
       };
 
       const body = (
-        <div style={modalStyle} className={classes.paper}>
+        <div  className={classes.paper}>
           <h2 id="simple-modal-title">{e.name}</h2>
           <p id="simple-modal-description">
             <b>{e.job}</b> z {e.experience} letnim doświadczeniem
@@ -87,6 +87,15 @@ const useStylesCard = makeStyles({
           {/* <EmployeeModal /> */}
           <br />
           <Button variant="contained" color="primary" size="medium">Nawiąż kontakt</Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            size="medium"
+            onClick={handleClose}
+            style={{float:"right"}}
+          >
+            Zamknij
+          </Button>
         </div>
       );
 
