@@ -48,30 +48,33 @@ const useStyles = makeStyles({
   },
 });
 
-const SimpleCard = () => {
-  const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+const SimpleCard = (props) => {
+    const e = props.employee;
+    const classes = useStyles();
+    // const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <Card className={classes.root}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Word of the Day
+          {e.category}
         </Typography>
-        <Typography variant="h5" component="h2">
-          be{bull}nev{bull}o{bull}lent
+        <Typography variant="h5" component="h2" className={classes.pos}>
+          {e.name}
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
+        {/* <Typography className={classes.pos} color="textSecondary">
           adjective
-        </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
+        </Typography> */}
+        {/* <Typography variant="body2" component="p">
+          Dostępność:
           <br />
-          {'"a benevolent smile"'}
-        </Typography>
+          {bull} Od: {e.availabilityFrom}
+          <br />
+          {bull} Do: {e.availabilityFrom}
+        </Typography> */}
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button size="small">Zobacz profil</Button>
       </CardActions>
     </Card>
   );
@@ -84,21 +87,27 @@ class SearchEmployee extends React.Component {
         showFilters: false
     }
 
+    showFilterSection = () => {
+        this.setState({
+            showFilters: true
+        })
+    }
+
     render() {
 
-        let employees = this.state.employeeDataToDisplay.map((item, index)=> (
-            <div>
-                <p key={index}>{item.name}</p>
-                <SimpleCard />
-            </div>
+        let employees = this.state.employeeDataToDisplay.map((e, index)=> (
+            <SimpleCard key={index} employee={e}/>
         ));
 
         return (
             <div className="em-container">
                 <nav>
                     <NavLink to="/employer-module"><Button color="primary">Powrót</Button></NavLink>
-                    <NavLink to="/add-job-offer"><Button color="primary">Filtry</Button></NavLink>
+                    <Button color="primary" onClick={this.showFilterSection}>Filtry</Button>
                 </nav>
+                <section className="em-filters">
+                        Filtry
+                </section>
                 <section className="em-card-box">
                     {employees}
                 </section>
