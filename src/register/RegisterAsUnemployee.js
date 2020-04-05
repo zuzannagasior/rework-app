@@ -7,10 +7,14 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import { Autocomplete } from "@material-ui/lab";
-import {NavLink} from 'react-router-dom'
+import { NavLink } from "react-router-dom";
+import Check from "@material-ui/icons/Check";
+import clsx from "clsx";
 
-const buttonStyle = {backgroundColor: "#FFBB10",margin: "20px 10px" }
-
+const buttonStyle = {
+  backgroundColor: "#FFBB10",
+  margin: "20px 10px",
+};
 
 const positions = [
   "Kosmetyczka",
@@ -77,10 +81,52 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const useQontoStepIconStyles = makeStyles({
+  root: {
+    color: "#eaeaf0",
+    display: "flex",
+    height: 22,
+    alignItems: "center",
+  },
+  active: {
+    color: "#FFBB10",
+  },
+  circle: {
+    width: 8,
+    height: 8,
+    borderRadius: "50%",
+    backgroundColor: "currentColor",
+  },
+  completed: {
+    color: "#FFBB10",
+    zIndex: 1,
+    fontSize: 18,
+  },
+});
+
+function QontoStepIcon(props) {
+  const classes = useQontoStepIconStyles();
+  const { active, completed } = props;
+
+  return (
+    <div
+      className={clsx(classes.root, {
+        [classes.active]: active,
+      })}
+    >
+      {completed ? (
+        <Check className={classes.completed} />
+      ) : (
+        <div className={classes.circle} />
+      )}{" "}
+    </div>
+  );
+}
+
 const inputStyles = {
   width: 300,
   margin: "1rem auto",
-  borderColor: "red"
+  borderColor: "red",
 };
 
 function getSteps() {
@@ -92,7 +138,7 @@ function getStepContent(step) {
     case 0:
       return (
         <>
-        <h3>Dodaj dane kontaktowe</h3>
+          <h3> Dodaj dane kontaktowe </h3>
           <TextField
             required
             id="standard-required"
@@ -105,7 +151,7 @@ function getStepContent(step) {
             label="Nazwisko"
             placeholder="Nazwisko "
             style={inputStyles}
-          />{" "}
+          />
           <br />
           <br />
           <TextField
@@ -113,13 +159,13 @@ function getStepContent(step) {
             label="Numer telefonu"
             type="number"
             style={inputStyles}
-          />{" "}
+          />
           <br />
           <TextField
             label="Adres email"
             placeholder="Email"
             style={inputStyles}
-          />{" "}
+          />
           <br />
           <br />
           <Autocomplete
@@ -131,12 +177,21 @@ function getStepContent(step) {
               <TextField {...params} label="Miasto" variant="outlined" />
             )}
           />
+          <TextField
+            style={inputStyles}
+            id="outlined-password-input"
+            label="Podaj hasło"
+            placeholder="hasło"
+            type="password"
+            autoComplete="current-password"
+            variant="outlined"
+          />
         </>
       );
     case 1:
       return (
         <>
-        <h3>Podaj swoje doświadczenie</h3>
+          <h3> Podaj swoje doświadczenie </h3>
           <Autocomplete
             id="combo-box-demo"
             options={positions.sort()}
@@ -161,36 +216,19 @@ function getStepContent(step) {
       );
     case 2:
       return (
-          <>
-          <h3>Dodaj dodatkowy opis</h3>
-        <TextField
-        id="outlined-multiline-static"
-        label="Napisz coś o sobie :)"
-        style={inputStyles}
-        multiline
-        rows="10"
-        defaultValue="Dodaj profil"
-        variant="outlined"
-      />
-        <br/>
-        <TextField
-          style={inputStyles}
-          id="outlined-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          variant="outlined"
-        />
-        <br/>
-       <TextField
-          style={inputStyles}
-          id="outlined-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          variant="outlined"
-        />
-      </>
+        <>
+          <h3> Dodaj dodatkowy opis </h3>
+          <TextField
+            id="outlined-multiline-static"
+            label="Napisz coś o sobie :)"
+            style={inputStyles}
+            multiline
+            rows="10"
+            defaultValue="Dodaj profil"
+            variant="outlined"
+          />
+          <br />
+        </>
       );
     default:
       return "Unknown step";
@@ -261,7 +299,7 @@ function RegisterAsUnemployee() {
           }
           return (
             <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}> {label} </StepLabel>{" "}
+              <StepLabel StepIconComponent={QontoStepIcon}> {label} </StepLabel>
             </Step>
           );
         })}
@@ -270,39 +308,70 @@ function RegisterAsUnemployee() {
         {activeStep === steps.length ? (
           <div>
             <Typography className={classes.instructions}>
-            <h2>Dziękujemy za rejestrację</h2>
-            <h2>w portalu Rework.io</h2>
-            <h3>Pracodawcy już mogą Ciebie wyszukać, tymczasem zobacz jakie oferty przygotowaliśmy dla Ciebie:</h3>
-            <NavLink to="/unemployee-module/job-offer-list" style={{textDecoration: "none"}}><Button style={buttonStyle}>Zobacz oferty pracy</Button></NavLink>
+              <h2> Dziękujemy za rejestrację </h2>
+              <h2> w portalu Rework.io </h2>
+              <h3>
+                Pracodawcy już mogą Ciebie wyszukać, tymczasem zobacz jakie
+                oferty przygotowaliśmy dla Ciebie:
+              </h3>
+              <NavLink
+                to="/unemployee-module/job-offer-list"
+                style={{
+                  textDecoration: "none",
+                }}
+              >
+                <Button style={buttonStyle}> Zobacz oferty pracy </Button>{" "}
+              </NavLink>
             </Typography>
           </div>
         ) : (
           <div>
             <Typography className={classes.instructions}>
-              
               {getStepContent(activeStep)}
             </Typography>
             <div>
-              <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                className={classes.button}
-              >
-                Cofnij
-              </Button>
+              {activeStep === 0 ? (
+                <NavLink
+                  to="/"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <Button
+                    style={{
+                      margin: "20px",
+                      backgroundColor: "#FFBB10",
+                    }}
+                  >
+                    Powrót
+                  </Button>
+                </NavLink>
+              ) : (
+                <Button
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                  className={classes.button}
+                >
+                  Cofnij
+                </Button>
+              )}
               {isStepOptional(activeStep) && (
                 <Button
                   variant="contained"
-                  color="primary"
+                  style={{
+                    backgroundColor: "#FFBB10",
+                  }}
                   onClick={handleSkip}
                   className={classes.button}
                 >
-                  Skip
+                  Skip{" "}
                 </Button>
-              )}
+              )}{" "}
               <Button
                 variant="contained"
-                color="primary"
+                style={{
+                  backgroundColor: "#FFBB10",
+                }}
                 onClick={handleNext}
                 className={classes.button}
               >
