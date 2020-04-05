@@ -76,15 +76,17 @@ const useStylesCard = makeStyles({
       const body = (
         <div  className={classes.paper} style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
           <div>
-            <h2 id="simple-modal-title">{e.name}</h2>
-            <p id="simple-modal-description">
-              <b>{e.job}</b> z {e.experience} letnim doświadczeniem
-              <br/>
-              <Icon style={{ color: "#FFBB10", fontSize: "1rem", marginTop: "0.5rem"}}>
+            <h2 id="simple-modal-title" style={{color: '#30AABC'}}>{e.name}</h2>
+            <p>
+            <Icon style={{ color: "#FFBB10", fontSize: "1rem"}}>
                 location_on
               </Icon>
               {e.location}
             </p>
+            <span style={{fontSize: '1.5rem', lineHeight: '2rem'}}><b>{e.position}</b></span>
+            <br />
+            <span>z {e.experience} letnim doświadczeniem</span>
+        
             <p id="simple-modal-description">
               <b>Profil:</b>
               <br />
@@ -92,9 +94,16 @@ const useStylesCard = makeStyles({
             </p>
             {/* <EmployeeModal /> */}
             <br />
+            <h2>Nawiąż kontakt</h2>
+            <div>
+                <h2><Icon style={{color:"#FFBB10", marginRight: "1rem", fontSize: "2rem", verticalAlign: 'middle'}}>phone</Icon>{e.phone}</h2>
+            </div>
+            <div  >
+                <h3 className="primary"><Icon style={{color: "#FFBB10", marginRight: "1rem", fontSize: "2rem", verticalAlign: 'middle'}}>email</Icon>{e.email}</h3>
+            </div>
           </div>
           <div  style={{marginBottom: "3rem"}}>
-            <Button variant="contained" style={{backgroundColor: "#30AABC", color: "#fff"}} size="medium">Nawiąż kontakt</Button>
+            <Button variant="contained" style={{backgroundColor: "#30AABC", color: "#fff"}} size="medium">Zadzwoń</Button>
             <Button
               variant="contained"
               color="default"
