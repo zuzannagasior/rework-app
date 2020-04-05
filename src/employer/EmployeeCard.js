@@ -119,7 +119,7 @@ const useStylesCard = makeStyles({
 
 
     return (
-      <Card className={classesCard.root}>
+      <Card className={classesCard.root} style={{color: "#666666"}}>
         <CardContent>
           <Typography className={classesCard.title} color="textSecondary" gutterBottom>
             <Icon style={{ color: "#FFBB10", fontSize: "1rem", marginRight: "0.5rem"  }}>
@@ -150,6 +150,7 @@ const useStylesCard = makeStyles({
             onClose={handleClose}
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
+            style={{overflow: "scroll"}}
             >
             {body}
         </Modal>

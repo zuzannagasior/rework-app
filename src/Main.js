@@ -6,7 +6,7 @@ import Logo from "./assets/logo2.svg";
 const Main = () => {
   const buttonStyle = {
     backgroundColor: "#FFBB10",
-    margin: "20px 10px",
+    margin: "1rem 2rem",
   };
   const upperStyle = {
     display: "flex",
@@ -33,7 +33,7 @@ const Main = () => {
         <NavLink
           to="/login"
           style={{
-            textDecoration: "none",
+            textDecoration: "none"
           }}
         >
           <Button style={buttonStyle}> Zaloguj </Button>
@@ -83,6 +83,7 @@ const Main = () => {
               width: "80%",
               backgroundColor: "#30AABC",
               margin: "16px",
+              color: "#fff"
             }}
           >
             Szukam pracy

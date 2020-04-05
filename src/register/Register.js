@@ -27,6 +27,7 @@ const Register = () => {
               width: "80%",
               backgroundColor: "#30AABC",
               margin: "16px",
+              color: "#fff"
             }}
           >
             Zarejestruj się jako pracownik

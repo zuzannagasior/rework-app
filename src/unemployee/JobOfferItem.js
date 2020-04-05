@@ -177,6 +177,7 @@ function JobOfferList({ id, description, date, location, title, company, phone, 
             onClose={handleClose}
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
+            style={{overflow: "scroll"}}
           >
            {body}
           </Modal>
