@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     paper: {
       position: 'absolute',
       maxWidth: 800,
+      minHeight: '100vh',
       backgroundColor: theme.palette.background.paper,
       // border: '2px solid #000',
       // boxShadow: theme.shadows[5],
@@ -57,57 +58,61 @@ function JobOfferList({ id, description, date, location, title, company, phone, 
   };
 
   const body = (
-    <div  className={classes.paper}>
-      <h2 id="simple-modal-title">{title}</h2>
-      <p id="simple-modal-description">
-        <b>{company}</b>
-        <br/>
-        <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            <Icon style={{ color: "#FFBB10", fontSize: "1rem" }}>
-              location_on
-            </Icon>{" "}
-            {location}
-            <Typography
+    <div className={classes.paper} style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+      <div>
+        <h2 id="simple-modal-title" style={{color: '#30AABC'}}>{title}</h2>
+        <p id="simple-modal-description">
+          <b>{company}</b>
+          <br/>
+          <Typography
               className={classes.title}
               color="textSecondary"
               gutterBottom
-              style={{ float: "right" }}
             >
-              <Icon style={{ color: "#FFBB10", fontSize: "1rem" }}>
-                access_time
+              <Icon style={{ color: "#FFBB10", fontSize: "1rem", marginTop: "0.5rem"}}>
+                location_on
               </Icon>{" "}
-              {date}
+              {location}
+              <Typography
+                className={classes.title}
+                color="textSecondary"
+                gutterBottom
+                style={{ float: "right" }}
+              >
+                <Icon style={{ color: "#FFBB10", fontSize: "1rem" }}>
+                  access_time
+                </Icon>{" "}
+                {date}
+              </Typography>
             </Typography>
-          </Typography>
-      </p>
-      <p id="simple-modal-description">
-      <b> Opis oferty :</b> 
+        </p>
+        <p id="simple-modal-description">
+        <b> Opis oferty :</b> 
+          <br />
+          {description}
+        </p>
+        <br/>
+        <h2>Nawiąż kontakt</h2>
+        <div>
+            <h2><Icon style={{color:"#FFBB10", marginRight: "1rem", fontSize: "2rem", verticalAlign: 'middle'}}>phone</Icon>{phone}</h2>
+        </div>
+        <div  >
+            <h3 className="primary"><Icon style={{color: "#FFBB10", marginRight: "1rem", fontSize: "2rem", verticalAlign: 'middle'}}>email</Icon>{email}</h3>
+        </div>
         <br />
-        {description}
-      </p>
-      <br/>
-      <h2 style={{textAlign: "center"}}>Nawiąż kontakt</h2>
-      <div  >
-           <h2 style={{ width: "100%", textAlign: "center", lineHeigth: "2rem"}}> <Icon style={{color:"#23a847", marginRight: "1rem", fontSize: "2rem"}}>phone</Icon>{phone}</h2>
       </div>
-      <div  >
-           <h3 className="primary"  style={{ width: "100%", textAlign: "center", lineHeigth: "2rem"}}> <Icon style={{color: "#23a847", marginRight: "1rem", fontSize: "2rem"}}>email</Icon>{email}</h3>
-      </div>
-      <br />
-      <Button variant="contained" style={{backgroundColor: "#23a847"}}  size="medium">Zadzwoń</Button>
+      <div style={{marginBottom: "3rem"}}>
+      <Button variant="contained" style={{backgroundColor: "#30AABC", color: "#fff"}}  size="medium">Zadzwoń</Button>
       <Button
             variant="contained"
-            color="secondary"
+            color="default"
             size="medium"
             onClick={handleClose}
             style={{float:"right"}}
           >
             Zamknij
           </Button>
+      </div>
     </div>
   );
 
